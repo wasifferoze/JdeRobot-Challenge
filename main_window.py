@@ -1,6 +1,5 @@
 import tkinter as tk
 from enum import Enum
-import sys
 from tkinter import ttk
 
 from conway_main import Universe
@@ -105,9 +104,29 @@ class GameOfLife(tk.Frame):
         self.gen_label.pack(side=tk.RIGHT, padx=3, pady=2)
 
     def combo_callback(self, eventobj):
-            """this method get combobox events"""
-            print(self.combo_input.get())  # print name
-            print(self.combo_input.current())  # print index
+        """this method get combobox events"""
+        # TODO implement method for initial input types other than random initailistion
+        print(self.combo_input.get())  # print name
+        print(self.combo_input.current())  # print index
+        input_index = self.combo_input.current()
+        if input_index == 0 and GameStatus.ONGOING:
+            GameStatus.PAUSE
+            self.canvas.delete('all')
+            # TODO only clear fill rectangles
+        elif input_index == 1:
+            print(input_index)
+        elif input_index == 2:
+            print(input_index)
+        elif input_index == 3:
+            print(input_index)
+        elif input_index == 4:
+            print(input_index)
+        elif input_index == 5:
+            print(input_index)
+        elif input_index == 6:
+            print(input_index)
+        else:
+            print(input_index)
 
 root = tk.Tk()
 root.title("Conway's Game of Life")
