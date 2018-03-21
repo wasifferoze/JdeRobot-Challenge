@@ -11,8 +11,8 @@ class Universe:
     def __init__(self, dim):
         h, w = dim
         # Minimum size
-        if w < 10 or h < 10:
-            w = h = 10
+        if w < 1 or h < 1:
+            w = h = 1
 
         self.dim = (h, w)
         self.space = numpy.zeros(self.dim)
@@ -75,3 +75,8 @@ class Universe:
             j = numpy.math.floor(p / h)
             self.put_life_in((i, j))
         self.generation = 0
+    def custom_rest(self, nlives):
+        glider = [[1, 0, 0],
+                  [0, 1, 1],
+                  [1, 1, 0]]
+        h, w = self.dim

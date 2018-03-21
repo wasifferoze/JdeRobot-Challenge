@@ -48,3 +48,4 @@ Temporary Items
 /.idea/markdown-navigator/profiles_settings.xml
 /.idea/game-of-life.iml
 /.idea/vcs.xml
+*.xml

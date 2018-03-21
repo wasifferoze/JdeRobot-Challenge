@@ -35,8 +35,8 @@ class GameOfLife(tk.Frame):
         self.control_area.pack(side=tk.BOTTOM, fill=tk.X)
         self.create_widgets()
 
-        dim = (50, 50)
-        nos = 500
+        dim = (25, 40)
+        nos = 100
         self.u = Universe(dim)
         self.nseed = nos
 
@@ -52,10 +52,10 @@ class GameOfLife(tk.Frame):
                 for j in range(w):
                     if self.u.space[i][j] == 1:
                         self.canvas.create_rectangle(
-                            j*ds, i*ds, j*ds+ds, i*ds+ds, fill="#508080")
+                            j*ds, i*ds, j*ds+ds, i*ds+ds, fill="green", outline='#101010')
                     else:
                         self.canvas.create_rectangle(
-                            j*ds, i*ds, j*ds+ds, i*ds+ds)
+                            j*ds, i*ds, j*ds+ds, i*ds+ds, fill="#808080")
             self.generation_text_var.set("Width: {}, Height: {}, Number of initial seeds: {}\nGeneration: {} ".
                                          format(self.u.dim[1], self.u.dim[0], self.nseed, self.u.generation))
             self.u.next_generation()
@@ -79,7 +79,7 @@ class GameOfLife(tk.Frame):
         tkvar = tk.StringVar(root)
         # Dictionary with options
         choices = ('Clear', 'Small Glider', 'Glider', 'Exploder', '10 Cell Row', 'Light Weight Spaceship', 'Tumbler',
-                   'Gosper Glider Gu')
+                   'Gosper Glider Gun')
         self.combo_input = ttk.Combobox(self.control_area, width=25, values=choices, state='readonly')
         self.combo_input.pack(side=tk.LEFT)
         self.combo_input.current(0)
@@ -112,9 +112,11 @@ class GameOfLife(tk.Frame):
         if input_index == 0 and GameStatus.ONGOING:
             GameStatus.PAUSE
             self.canvas.delete('all')
+            GameStatus.ONGOING
             # TODO only clear fill rectangles
         elif input_index == 1:
             print(input_index)
+            self.nos = 1000
         elif input_index == 2:
             print(input_index)
         elif input_index == 3:
